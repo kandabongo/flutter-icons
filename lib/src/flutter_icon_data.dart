@@ -1,22 +1,22 @@
 import 'package:flutter/widgets.dart';
 
-class FlutterIconData extends IconData {
-  const FlutterIconData(int codePoint, [String? fontFamily])
-      : super(codePoint, fontFamily: fontFamily, fontPackage: 'flutter_icons');
-  const FlutterIconData.antDesign(int codePoint) : this(codePoint, 'AntDesign');
-  const FlutterIconData.entypo(int codePoint) : this(codePoint, 'Entypo');
-  const FlutterIconData.evilIcons(int codePoint) : this(codePoint, 'EvilIcons');
-  const FlutterIconData.feather(int codePoint) : this(codePoint, 'Feather');
-  const FlutterIconData.fontAwesome(int codePoint) : this(codePoint, 'FontAwesome');
-  const FlutterIconData.fontAwesome5(int codePoint) : this(codePoint, 'FontAwesome5_Regular');
-  const FlutterIconData.fontAwesome5Solid(int codePoint) : this(codePoint, 'FontAwesome5_Solid');
-  const FlutterIconData.fontAwesome5Brands(int codePoint) : this(codePoint, 'FontAwesome5_Brands');
-  const FlutterIconData.foundation(int codePoint) : this(codePoint, 'Foundation');
-  const FlutterIconData.ionicons(int codePoint) : this(codePoint, 'Ionicons');
-  const FlutterIconData.materialCommunityIcons(int codePoint) : this(codePoint, 'MaterialCommunityIcons');
-  const FlutterIconData.materialIcons(int codePoint) : this(codePoint, 'MaterialIcons');
-  const FlutterIconData.octicons(int codePoint) : this(codePoint, 'Octicons');
-  const FlutterIconData.simpleLineIcons(int codePoint) : this(codePoint, 'SimpleLineIcons');
-  const FlutterIconData.zocial(int codePoint) : this(codePoint, 'Zocial');
-  const FlutterIconData.weatherIcons(int codePoint) : this(codePoint, 'WeatherIcons');
+typedef FlutterIconData = IconData;
+
+extension FlutterIconDataExtension on IconData {
+  static IconData antDesign(int codePoint) => IconData(codePoint, fontFamily: 'AntDesign', fontPackage: 'flutter_icons');
+  static IconData entypo(int codePoint) => IconData(codePoint, fontFamily: 'Entypo', fontPackage: 'flutter_icons');
+  static IconData evilIcons(int codePoint) => IconData(codePoint, fontFamily: 'EvilIcons', fontPackage: 'flutter_icons');
+  static IconData feather(int codePoint) => IconData(codePoint, fontFamily: 'Feather', fontPackage: 'flutter_icons');
+  static IconData fontAwesome(int codePoint) => IconData(codePoint, fontFamily: 'FontAwesome', fontPackage: 'flutter_icons');
+  static IconData fontAwesome5(int codePoint) => IconData(codePoint, fontFamily: 'FontAwesome5_Regular', fontPackage: 'flutter_icons');
+  static IconData fontAwesome5Solid(int codePoint) => IconData(codePoint, fontFamily: 'FontAwesome5_Solid', fontPackage: 'flutter_icons');
+  static IconData fontAwesome5Brands(int codePoint) => IconData(codePoint, fontFamily: 'FontAwesome5_Brands', fontPackage: 'flutter_icons');
+  static IconData foundation(int codePoint) => IconData(codePoint, fontFamily: 'Foundation', fontPackage: 'flutter_icons');
+  static IconData ionicons(int codePoint) => IconData(codePoint, fontFamily: 'Ionicons', fontPackage: 'flutter_icons');
+  static IconData materialCommunityIcons(int codePoint) => IconData(codePoint, fontFamily: 'MaterialCommunityIcons', fontPackage: 'flutter_icons');
+  static IconData materialIcons(int codePoint) => IconData(codePoint, fontFamily: 'MaterialIcons', fontPackage: 'flutter_icons');
+  static IconData octicons(int codePoint) => IconData(codePoint, fontFamily: 'Octicons', fontPackage: 'flutter_icons');
+  static IconData simpleLineIcons(int codePoint) => IconData(codePoint, fontFamily: 'SimpleLineIcons', fontPackage: 'flutter_icons');
+  static IconData zocial(int codePoint) => IconData(codePoint, fontFamily: 'Zocial', fontPackage: 'flutter_icons');
+  static IconData weatherIcons(int codePoint) => IconData(codePoint, fontFamily: 'WeatherIcons', fontPackage: 'flutter_icons');
 }
