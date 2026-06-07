@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -25,18 +24,18 @@ class IconToggle extends StatefulWidget {
   final Color activeColor;
   final Color inactiveColor;
   final bool value;
-  final ValueChanged<bool> onChanged;
+  final ValueChanged<bool>? onChanged;
   final AnimatedSwitcherTransitionBuilder transitionBuilder;
   final Duration duration;
-  final Duration reverseDuration;
+  final Duration? reverseDuration;
   @override
   _IconToggleState createState() => _IconToggleState();
 }
 
 class _IconToggleState extends State<IconToggle>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _position;
+  late AnimationController _controller;
+  late Animation<double> _position;
   bool _cancel = false;
 
   @override
@@ -51,14 +50,14 @@ class _IconToggleState extends State<IconToggle>
       if (status == AnimationStatus.dismissed &&
           widget.onChanged != null &&
           _cancel == false) {
-        widget.onChanged(!widget.value);
+        widget.onChanged!(!widget.value);
       }
     });
   }
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -68,14 +67,14 @@ class _IconToggleState extends State<IconToggle>
       behavior: HitTestBehavior.opaque,
       onTapDown: (event) {
         _cancel = false;
-        _controller?.forward();
+        _controller.forward();
       },
       onTapUp: (event) {
-        _controller?.reverse();
+        _controller.reverse();
       },
       onTapCancel: () {
         _cancel = true;
-        _controller?.reverse();
+        _controller.reverse();
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -101,20 +100,20 @@ class _IconToggleState extends State<IconToggle>
 }
 
 class _IconToggleable<T> extends AnimatedWidget {
-  _IconToggleable({
-    Animation<T> listenable,
+  const _IconToggleable({
+    required Animation<T> listenable,
     this.activeColor,
     this.inactiveColor,
     this.child,
   }) : super(listenable: listenable);
-  final Color activeColor;
-  final Color inactiveColor;
-  final Widget child;
+  final Color? activeColor;
+  final Color? inactiveColor;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _IconPainter(
-        position: listenable,
+        position: listenable as Animation<double>,
         activeColor: activeColor,
         inactiveColor: inactiveColor,
       ),
@@ -125,20 +124,20 @@ class _IconToggleable<T> extends AnimatedWidget {
 
 class _IconPainter extends CustomPainter {
   _IconPainter({
-    @required this.position,
+    required this.position,
     this.activeColor,
     this.inactiveColor,
   });
   final Animation<double> position;
-  final Color activeColor;
-  final Color inactiveColor;
+  final Color? activeColor;
+  final Color? inactiveColor;
 
-  double get _value => position != null ? position.value : 0;
+  double get _value => position.value;
 
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = Color.lerp(inactiveColor, activeColor, _value)
+      ..color = (Color.lerp(inactiveColor, activeColor, _value) ?? Colors.transparent)
           .withOpacity(math.min(_value, 0.15))
       ..style = PaintingStyle.fill
       ..strokeWidth = 2.0;
